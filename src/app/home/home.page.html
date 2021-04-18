@@ -1,0 +1,26 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>Searchbar</ion-title>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar #searchbar></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <ion-list>
+    <ion-item
+      *ngFor="let item of items$ | async; trackBy: trackByFn"
+      [routerLink]="'/product/' + item.sku"
+      [detail]=" false"
+    >
+      <ion-avatar slot="start">
+        <img [src]="item.image">
+      </ion-avatar>
+      <ion-label>
+        <h2>{{item.name}}</h2>
+        <p>{{item.description}}</p>
+      </ion-label>
+    </ion-item>
+  </ion-list>
+</ion-content>

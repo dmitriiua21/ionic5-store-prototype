@@ -1,0 +1,49 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>product</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header class="ion-no-padding">
+      <ion-img [src]="product?.image"></ion-img>
+    </ion-card-header>
+    <ion-card-content class="ion-no-padding">
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <h1>{{product?.name}}</h1>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p>{{product?.description}}</p>
+          </ion-col>
+        </ion-row>
+        <form [formGroup]="productForm">
+          <ion-row class="ion-justify-content-between">
+            <ion-col class="product-btns">
+              <ion-button color="primary" (click)="setFormControlValue('amount', 100, true)">$100</ion-button>
+              <ion-button color="primary" (click)="setFormControlValue('amount', 10, true)">$10</ion-button>
+              <ion-button color="primary" (click)="setFormControlValue('quantity', 2.2, true)">2.2 qty</ion-button>
+              <ion-button color="primary" (click)="setFormControlValue('quantity', 9, true)">9 qty</ion-button>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="stacked">Ampount, $</ion-label>
+                <ion-input type="number" formControlName="amount"></ion-input>
+              </ion-item>
+            </ion-col>
+            <ion-col size="6">
+              <ion-item>
+                <ion-label position="stacked">Quantity</ion-label>
+                <ion-input type="number" formControlName="quantity"></ion-input>
+              </ion-item>
+            </ion-col>
+          </ion-row>
+        </form>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+</ion-content>

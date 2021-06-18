@@ -23,7 +23,10 @@ export class HomePage implements OnInit {
 
   ngOnInit(): void {
     this.getProducts()
-    this.checkRefresh()
+  }
+
+  ionViewWillEnter() {
+    this.loadStoredValue()
   }
 
   getProducts() {
@@ -54,14 +57,8 @@ export class HomePage implements OnInit {
     return await this.storage.getValue(this.STORAGE_KEY);
   }
 
-  private checkRefresh() {
-    this.router.events.pipe(
-      filter(event => event instanceof NavigationEnd)
-    ).subscribe(async (event: NavigationEnd) => {
-        if (event.id === 1 && event.url === event.urlAfterRedirects) {
-          this.searchbar.value = await this.getFilterValue();
-        }
-    });
+  private async loadStoredValue() {
+    this.searchbar.value = await this.getFilterValue();
   }
 
 }
